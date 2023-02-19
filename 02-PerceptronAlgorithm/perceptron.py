@@ -46,3 +46,24 @@ print(model.predict(X))
 model.fit(X, Y)
 print(model.predict(X))
 
+
+# ***************Grafica***************
+def draw_2d_perceptron(net):
+    w1, w2, b = net.w[0], net.w[1], net.b
+    plt.plot([-2, 2], [(1/w2) * (-w1 * (-2)-b), (1/w2) * (-w1 * 2 -b), '--k'])
+    
+_, p = X.shape
+for i in range(p):
+    if Y[i] == 0:
+        plt.plot(X[0, i], X[1, i], 'or') #punto rojo
+    else:
+        plt.plot(X[0, i], X[1, i], 'ob') #punto azul
+        
+plt.title('Perceptron')
+plt.grid('on')
+plt.xlim(-2, 2)
+plt.ylim(-2, 2)
+plt.xlabel(r'$x_1$')
+plt.ylabel(r'$x_2$')
+
+draw_2d_perceptron(model)
