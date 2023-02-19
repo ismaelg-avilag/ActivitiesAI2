@@ -34,3 +34,15 @@ class Perceptron:
                 y_est = self.predict(X[:, i].reshape(-1, 1))
                 self.w += self.eta * (Y[i] - y_est) * X[:, i]
                 self.b += self.eta * (Y[i] - y_est)
+
+
+# ***************Ejemplo***************
+X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
+Y = np.array([0, 1, 1, 1])
+
+model = Perceptron(2, 0.1)
+print(model.predict(X))
+
+model.fit(X, Y)
+print(model.predict(X))
+
