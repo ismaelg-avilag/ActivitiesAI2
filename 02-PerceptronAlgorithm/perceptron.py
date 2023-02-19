@@ -14,7 +14,7 @@ class Perceptron:
 
 
     def predict(self, X):
-        _, p = X.shape
+        p = X.shape[1]
         y_est = np.zeros(p)
 
         for i in range(p):
@@ -28,7 +28,7 @@ class Perceptron:
 
 
     def fit(self, X, Y, epochs = 50):
-        _, p = X.shape
+        p = X.shape[1]
         for _ in range(epochs):
             for i in range(p):
                 y_est = self.predict(X[:, i].reshape(-1, 1))
@@ -38,34 +38,29 @@ class Perceptron:
 
 # *************** Ejemplo ***************
 #   Compuerta AND
-X_and = np.array([[0, 0, 1, 1],
-              [0, 1, 0, 1]])
+X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
 Y = np.array([0, 0, 0, 1])
 
 #   Compuerta OR
-X = np.array([[0, 0, 1, 1],
-              [0, 1, 0, 1]])
-Y = np.array([0, 1, 1, 1])
+#X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
+#Y = np.array([0, 1, 1, 1])
 
 #   Compuerta XOR
-X = np.array([[0, 0, 1, 1],
-              [0, 1, 0, 1]])
-Y = np.array([0, 1, 1, 0])
+#X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
+#Y = np.array([0, 1, 1, 0])
 
 
-
-model = Perceptron(2, 0.1)
-print(model.predict(X))
-
-model.fit(X, Y)
-print(model.predict(X))
+neuron= Perceptron(2, 0.1)
+neuron.fit(X, Y)
 
 
 # *************** Grafica ***************
-def draw_2d_perceptron(net):
-    w1, w2, b = net.w[0], net.w[1], net.b
-    plt.plot([-2, 2], [(1/w2) * (-w1 * (-2)-b), (1/w2) * (-w1 * 2 -b), '--k'])
-    
+# Dibuja la linea que separa las dos clases
+def draw_2d(model):
+    w1, w2, b = model.w[0], model.w[1], model.b
+    plt.plot([-2, 2], [(1/w2) * (-w1 * (-2)-b), (1/w2) * (-w1 * 2 -b)], '--k')
+
+# Se dibuja cada uno de los puntos
 _, p = X.shape
 for i in range(p):
     if Y[i] == 0:
@@ -80,4 +75,4 @@ plt.ylim(-2, 2)
 plt.xlabel(r'$x_1$')
 plt.ylabel(r'$x_2$')
 
-draw_2d_perceptron(model)
+draw_2d(neuron)
