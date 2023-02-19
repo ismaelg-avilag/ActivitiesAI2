@@ -36,9 +36,23 @@ class Perceptron:
                 self.b += self.eta * (Y[i] - y_est)
 
 
-# ***************Ejemplo***************
-X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
+# *************** Ejemplo ***************
+#   Compuerta AND
+X_and = np.array([[0, 0, 1, 1],
+              [0, 1, 0, 1]])
+Y = np.array([0, 0, 0, 1])
+
+#   Compuerta OR
+X = np.array([[0, 0, 1, 1],
+              [0, 1, 0, 1]])
 Y = np.array([0, 1, 1, 1])
+
+#   Compuerta XOR
+X = np.array([[0, 0, 1, 1],
+              [0, 1, 0, 1]])
+Y = np.array([0, 1, 1, 0])
+
+
 
 model = Perceptron(2, 0.1)
 print(model.predict(X))
@@ -47,7 +61,7 @@ model.fit(X, Y)
 print(model.predict(X))
 
 
-# ***************Grafica***************
+# *************** Grafica ***************
 def draw_2d_perceptron(net):
     w1, w2, b = net.w[0], net.w[1], net.b
     plt.plot([-2, 2], [(1/w2) * (-w1 * (-2)-b), (1/w2) * (-w1 * 2 -b), '--k'])
