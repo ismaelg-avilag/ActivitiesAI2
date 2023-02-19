@@ -36,7 +36,7 @@ class Perceptron:
                 self.b += self.eta * (Y[i] - y_est)
 
 
-# *************** Ejemplo ***************
+# *************** Ejercicio Compuertas Logicas ***************
 #   Compuerta AND
 X = np.array([[0, 0, 1, 1], [0, 1, 0, 1]])
 Y = np.array([0, 0, 0, 1])
@@ -76,3 +76,19 @@ plt.xlabel(r'$x_1$')
 plt.ylabel(r'$x_2$')
 
 draw_2d(neuron)
+
+
+# *************** Ejercicio Sobrepeso ***************
+# Creacion de dataset de entrenamiento
+training_heights = np.random.uniform(1.5, 2.0, size=(100, 1))
+training_weights = np.random.uniform(40, 120, size=(100, 1))
+training_imc = training_weights / (training_heights ** 2)
+training_tags = np.where(training_imc > 25, 1, -1)
+
+
+
+# Creacion de dataset de prueba
+testing_heights = np.random.uniform(1.5, 2.0, size=(100, 1))
+testing_weights = np.random.uniform(40, 120, size=(100, 1))
+testing_imc = testing_weights / (testing_heights ** 2)
+testing_tags = np.where(training_imc > 25, 1, -1)
