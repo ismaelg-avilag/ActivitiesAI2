@@ -83,6 +83,7 @@ draw_2d(neuron)
 training_heights = np.random.uniform(1.5, 2.0, size=(100, 1))
 training_weights = np.random.uniform(40, 120, size=(100, 1))
 training_imc = training_weights / (training_heights ** 2)
+training_imc_norm = (training_imc - training_imc.min()) / (training_imc.max() - training_imc.min())
 training_tags = np.where(training_imc > 25, 1, -1)
 
 
@@ -91,4 +92,5 @@ training_tags = np.where(training_imc > 25, 1, -1)
 testing_heights = np.random.uniform(1.5, 2.0, size=(100, 1))
 testing_weights = np.random.uniform(40, 120, size=(100, 1))
 testing_imc = testing_weights / (testing_heights ** 2)
+testing_imc_norm = (testing_imc - testing_imc.min()) / (testing_imc.max() - testing_imc.min())
 testing_tags = np.where(training_imc > 25, 1, -1)
