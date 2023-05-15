@@ -6,7 +6,6 @@ Funciones de Activación para la OLN
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 # Activation Functions
