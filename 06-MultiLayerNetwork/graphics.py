@@ -2,11 +2,12 @@
 Actividad: A06. Red Neruonal Multicapa
 Inteligencia Artificial 2
 
-Ejemplo
+Gráfica
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 from MLP import *
 
 def MLP_binary_classification_2d(X,Y,net):
@@ -30,15 +31,3 @@ def MLP_binary_classification_2d(X,Y,net):
     plt.ylim([ymin,ymax])
     plt.grid()
     plt.show()
-    
-X = np.array([[0, 0, 1, 1],
-              [0, 1, 0, 1]])
-Y = np.array([[0, 1, 1, 0]]) 
-
-net = DenseNetwork((2,20,1))
-print(net.predict(X))
-MLP_binary_classification_2d(X, Y, net)
-
-net.fit(X, Y)
-print(net.predict(X))
-MLP_binary_classification_2d(X, Y, net)
