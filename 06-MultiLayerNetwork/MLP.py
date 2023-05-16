@@ -18,8 +18,8 @@ class DenseNetwork:
         
         # Initialize weights and baiases
         for l in range(1, self.L + 1):
-            self.w[l] = -1 + 2 * np.random.rand(layers_dim,[l], layers_dim[l-1])
-            self.b[l] = -1 + 2 * np.random.rand(layers_dim,[l], 1)
+            self.w[l] = -1 + 2 * np.random.rand(layers_dim[l], layers_dim[l-1])
+            self.b[l] = -1 + 2 * np.random.rand(layers_dim[l], 1)
             
             if l == self.L:
                 self.f[l] = output_activation
@@ -59,5 +59,5 @@ class DenseNetwork:
             
             # Gradient descent
             for l in range(1, self.L + 1):
-                self.w -= (lr/p) * (lg[l] @ a[l-1].T)
-                self.b -= (lr/p) * np.sum(lg[l])
+                self.w[l] -= (lr/p) * (lg[l] @ a[l-1].T)
+                self.b[l] -= (lr/p) * np.sum(lg[l])
