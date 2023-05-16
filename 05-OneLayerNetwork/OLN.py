@@ -25,8 +25,8 @@ class OLN:
         # batch version
         for _ in range(epochs):
             # propagation
-            Z = self.w @ X + b
-            Y_est, dY = self.f(z, derivative = True)
+            Z = self.w @ X + self.b
+            Y_est, dY = self.f(Z, derivative = True)
             
             # calculate the local gradient
             lg = (Y - Y_est) * dY
